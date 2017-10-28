@@ -20,37 +20,42 @@ chats.once('value', function(snap){
     document.getElementById("notificaciones").innerHTML = ""+numero_mensajes;
 });
 
-chats.limitToLast(1).on('child_added', function(snapshot) {
+var getFromServer = function (snapshot) {
     var username = snapshot.child('persona').val();
     if(username == '')
       username = 'Unnamed';
     var fecha = snapshot.child('fecha').val();
     var mensaje = snapshot.child('mensaje').val();
-  
-  
     chat.innerHTML += crearMensaje(username, fecha, mensaje);
     chat.scrollTop = chat.scrollHeight;
+}
+
+chats.limitToLast(1).on('child_added', function(snap){
+  getFromServer(snap);
 });
+
 function anadirMensajesPerdidos(e){
   if(!mensajesMostrados){
     chat.innerHTML ="";
     chats = firebase.database().ref().child('chats');
-  chats.on('child_added', function(snapshot) {
-    var username = snapshot.child('persona').val();
-    if(username == '')
-      username = 'Unnamed';
-    var fecha = snapshot.child('fecha').val();
-    var mensaje = snapshot.child('mensaje').val();
   
-  
-    chat.innerHTML += crearMensaje(username, fecha, mensaje);
-    chat.scrollTop = chat.scrollHeight;
-});
-  mensajesMostrados = true;
+    chats.once('value', function(snap) {
+      var objeto = snap.val();
+      mensajes_keys = Object.keys(objeto);
+      
+      for (var i = 0; i < mensajes_keys.length ; i++) {
+        var contenedor = snap.child(mensajes_keys[i]);
+        getFromServer(contenedor);
+      }
+    
+      document.getElementById("notificaciones").innerHTML = "0";
+      
+    });
+    mensajesMostrados = true;
+  }
 }
-}
-function sendToServer(texto){
 
+function sendToServer(texto){
     var username = document.getElementById("username");
     var date = new Date();
     var fecha = formatFecha(date);
@@ -111,9 +116,9 @@ $(document).ready(function () {
   
   var animating = false,
       username = "",
-      submitPhase1 = 1100,
-      submitPhase2 = 400,
-      logoutPhase1 = 800,
+      submitPhase1 = 400,
+      submitPhase2 = 200,
+      logoutPhase1 = 600,
       $login = $(".login"),
       $app = $(".app");
   

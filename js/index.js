@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyBimu9MpFSjzsfz7kVrBBHfDWOmnLyXKJw",
-    authDomain: "myef-3073f.firebaseapp.com",
-    databaseURL: "https://myef-3073f.firebaseio.com",
-    projectId: "myef-3073f",
-    storageBucket: "myef-3073f.appspot.com",
-    messagingSenderId: "511146896981"
+  apiKey: "AIzaSyCEb5aWCGKm7zCIK1jJ0DhxUMZ7PDDR5u0",
+    authDomain: "hackathon-msft.firebaseapp.com",
+    databaseURL: "https://hackathon-msft.firebaseio.com",
+    projectId: "hackathon-msft",
+    storageBucket: "",
+    messagingSenderId: "490868198980"
 };
 firebase.initializeApp(config);
 var mensajesMostrados = false;
@@ -38,18 +38,18 @@ function anadirMensajesPerdidos(e){
   if(!mensajesMostrados){
     chat.innerHTML ="";
     chats = firebase.database().ref().child('chats');
-  
+
     chats.once('value', function(snap) {
       var objeto = snap.val();
       mensajes_keys = Object.keys(objeto);
-      
+
       for (var i = 0; i < mensajes_keys.length ; i++) {
         var contenedor = snap.child(mensajes_keys[i]);
         getFromServer(contenedor);
       }
-    
+
       document.getElementById("notificaciones").innerHTML = "0";
-      
+
     });
     mensajesMostrados = true;
   }
@@ -75,7 +75,7 @@ function crearMensaje(username, fecha, mensaje){
   if(mensaje == '(((server)))LOGIN(((server)))')
       mensaje='<strong><i class="blue">Ha entrado</i></strong>';
     return '<div class="app__meeting"> <p class="app__meeting-name"><span class="app__meeting-time"><b>'+ username+':</b> '+ mensaje + '</span></p><p class="app__meeting-info">' + fecha + '</p> </div>';
-  
+
 }
 
 function adios(){
@@ -113,7 +113,7 @@ function zeroFill( number, width ) {
 
 
 $(document).ready(function () {
-  
+
   var animating = false,
       username = "",
       submitPhase1 = 400,
@@ -121,7 +121,7 @@ $(document).ready(function () {
       logoutPhase1 = 600,
       $login = $(".login"),
       $app = $(".app");
-  
+
   function ripple(elem, e) {
     $(".ripple").remove();
     var elTop = elem.offset().top,
@@ -132,19 +132,19 @@ $(document).ready(function () {
     $ripple.css({top: y, left: x});
     elem.append($ripple);
   };
-  
+
   $(document).on("click", ".login__submit", function(e) {
 
   sendToServer('(((server)))LOGIN(((server)))');
     if (animating) return;
     animating = true;
     var that = this;
-    
+
     username = document.getElementById("username").value;
     if(username == '')
       username = 'Unnamed';
     document.getElementById("saludo").innerHTML = "Welcome, " + username;
-    
+
     ripple($(that), e);
     $(that).addClass("processing");
     setTimeout(function() {
@@ -162,7 +162,7 @@ $(document).ready(function () {
       }, submitPhase2);
     }, submitPhase1);
   });
-  
+
   $("#username").keyup(function( event ) {
     if ( event.which == 13 ) {
        event.preventDefault();
@@ -170,7 +170,7 @@ $(document).ready(function () {
        $( ".login__submit" ).trigger( "click" );
     }
   });
-  
+
   $(document).on("click", ".app__logout", function(e) {
 
   sendToServer('(((server)))LOGOUT(((server)))');

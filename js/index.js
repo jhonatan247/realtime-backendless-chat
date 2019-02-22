@@ -120,7 +120,7 @@ function enableVoiceRecognition () {
 
   recognition.onresult = function(event) {
       console.log('You said: ', event.results[0][0].transcript);
-      chat.innerHTML += crearMensaje('bot', 'hoy', event.results[0][0].transcript);
+      chat.innerHTML += crearMensaje('Bot', 'hoy', event.results[0][0].transcript);
   };
 };
 

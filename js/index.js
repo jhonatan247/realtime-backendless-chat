@@ -120,10 +120,16 @@ function enableVoiceRecognition () {
 
   recognition.onresult = function(event) {
       console.log('You said: ', event.results[0][0].transcript);
-      chat.innerHTML += crearMensaje('Bot', 'hoy', event.results[0][0].transcript);
+      var user_message =  event.results[0][0].transcript
+      chat.innerHTML += crearMensaje('Bot', 'hoy', user_message);
   };
 };
 
+
+function speak (word){
+    var msg = new SpeechSynthesisUtterance(word);
+    window.speechSynthesis.speak(msg);
+}
 
 $(document).ready(function () {
   var animating = false,

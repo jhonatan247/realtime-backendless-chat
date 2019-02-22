@@ -111,9 +111,21 @@ function zeroFill( number, width ) {
   return number + ""; // always return a string
 }
 
+function enableVoiceRecognition () {
+  var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 5;
+  recognition.start();
+
+  recognition.onresult = function(event) {
+      console.log('You said: ', event.results[0][0].transcript);
+      chat.innerHTML += crearMensaje('bot', 'hoy', event.results[0][0].transcript);
+  };
+};
+
 
 $(document).ready(function () {
-
   var animating = false,
       username = "",
       submitPhase1 = 400,

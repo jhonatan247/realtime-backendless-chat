@@ -17,6 +17,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <title>Chat</title>
     <link rel="icon" href="images/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
     <style>
       *,:before,:after{box-sizing:border-box;margin:0;padding:0}::-webkit-input-placeholder{color:#b4b4b4}:-moz-placeholder{color:#b4b4b4;opacity:1}::-moz-placeholder{color:#b4b4b4;opacity:1}:-ms-input-placeholder{color:#b4b4b4}::-ms-input-placeholder{color:#b4b4b4}html,body{font-size:1rem;height:100%;overflow:hidden}svg{display:inline-block;width:2rem;height:2rem;overflow:visible}.svg-icon path{stroke:rgba(255,255,255,0.9);fill:none;stroke-width:1}input,button{outline:none;border:none}.cont{position:relative;height:100%;background-image:url(images/slider-2.jpg);background-size:cover;overflow:auto;font-family:"Open Sans",Helvetica,Arial,sans-serif}.demo{position:absolute;top:50%;left:50%;margin-left:-15rem;margin-top:-26.5rem;width:30rem;height:53rem;overflow:hidden}.login{position:relative;height:100%;background:-webkit-linear-gradient(top,rgba(146,135,187,0.8) 0%,rgba(0,0,0,0.6) 100%);background:linear-gradient(to bottom,rgba(146,135,187,0.8) 0%,rgba(0,0,0,0.6) 100%);-webkit-transform:scale(1);transform:scale(1)}.login__check{position:absolute;top:16rem;left:13.5rem;width:14rem;height:2.8rem;background:#fff;-webkit-transform-origin:0 100%;transform-origin:0 100%;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.login__check:before{content:"";position:absolute;left:0;bottom:100%;width:2.8rem;height:5.2rem;background:#fff;box-shadow:inset -.2rem -2rem 2rem rgba(0,0,0,0.2)}.login__form{position:absolute;top:50%;left:0;width:100%;height:50%;padding:1.5rem 2.5rem;text-align:center}.login__row{height:5rem;padding-top:1rem;border-bottom:1px solid rgba(255,255,255,0.2)}.login__icon{margin-bottom:-.4rem;margin-right:.5rem}.login__icon.name path{stroke-dasharray:73.501960754395;stroke-dashoffset:73.501960754395;-webkit-animation:animatePath 2s .5s forwards;animation:animatePath 2s .5s forwards}.login__input{display:inline-block;width:22rem;height:100%;padding-left:1.5rem;background:transparent;color:#FDFCFD;font-size:1.5rem}.login__submit{position:relative;width:100%;height:4rem;margin:5rem 0 2.2rem;color:rgba(255,255,255,0.8);background:#F36;font-size:1.5rem;border-radius:3rem;overflow:hidden}.login__submit:after{content:"";position:absolute;top:50%;left:50%;margin-left:-1.5rem;margin-top:-1.5rem;width:3rem;height:3rem;border:2px dotted #fff;border-radius:50%;border-left:none;border-bottom:none;opacity:0}.app{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;display:none;-webkit-transform:scale(1.2);transform:scale(1.2)}.app__top{position:relative;height:20rem;background:rgba(0,0,0,0.5);padding:6rem 0 2rem;text-align:center}.app__bot{position:relative;height:33rem;background:#fff}.app__hello{font-size:2.2rem;color:#fff;font-weight:400;margin-bottom:1rem}.app__user{position:relative;display:inline-block;width:9rem;height:9rem;margin-bottom:3rem}.app__user-photo{width:100%;height:100%;border-radius:50%;-webkit-transform:scale(0);transform:scale(0)}.app__user-notif{position:absolute;top:0;right:0;width:3rem;height:3rem;border-radius:50%;line-height:3rem;text-align:center;background:#148F77;color:#fff;font-size:1.5rem}#chat{height:29rem;overflow:auto}.write_message{position:absolute;bottom:0;height:5rem;width:100%;border-bottom:1px solid #EEEEEF}.user_input{width:100%;padding:12px 20px;margin:8px 0;display:inline-block;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;color:#282828;font-size:1.2rem}.app__meeting{position:relative;width:100%;overflow:auto;display:inline-block;border-top:1px solid #EEEEEF;padding:0 2rem 1rem;-webkit-transform:translateY(-50%);transform:translateY(-50%);opacity:0}.app__logout{position:absolute;top:1rem;right:3.3rem;width:4.6rem;height:4.6rem;margin-right:-2.3rem;margin-bottom:-2.3rem;background-color:#fc3768;color:#fff;font-size:2rem;border-radius:50%;-webkit-transform:scale(0);transform:scale(0)}.app__logout-icon{position:absolute;width:3rem;height:3rem;top:50%;left:50%;margin-left:-1.5rem;margin-top:-1.5rem}.app__logout-icon path{stroke-width:4px;stroke-dasharray:64.362350463867;stroke-dashoffset:64.362350463867;-webkit-animation:animatePath .5s .5s forwards;animation:animatePath .5s .5s forwards}@-webkit-keyframes animatePath{to{stroke-dashoffset:0}}@keyframes animatePath{to{stroke-dashoffset:0}}@media (max-width: 500px){html,body{font-size:.9rem}}@media (max-width: 450px){html,body{font-size:.8rem}}@media (max-width: 400px){html,body{font-size:.7rem}}@media (max-width: 360px){html,body{font-size:.65rem}}@media (max-height: 820px){.demo{position:relative;top:0;margin-top:0}}
     </style>
@@ -26,7 +27,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   <div class="cont">
   <div class="demo">
     <div class="login">
-      
+
         <div class="login__check"></div>
         <div class="login__form">
           <div class="login__row">
@@ -37,37 +38,38 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           </div>
           <button type="button" class="login__submit">Sign in</button>
         </div>
-        
+
     </div>
-    
+
     <div class="app">
-      
+
       <div class="app__top">
         <p id="saludo" class="app__hello"></p>
         <div class="app__user">
           <img src="images/work_icon.png" alt="" class="app__user-photo"/>
           <span id="notificaciones" class="app__user-notif" onclick="anadirMensajesPerdidos(event)">3</span>
         </div>
-          
+
       </div>
-      <div class="app__bot"> 
-        <div id="chat" class="app__meeting">  
+      <div class="app__bot">
+        <div id="chat" class="app__meeting">
         </div>
-        
+
+
         <div class=" write_message">
-          <input type="text" id="mensaje" class="user_input name" placeholder="Escribe un mensaje aqui" onkeyUp="send(event)"/>
+          <input type="text" id="mensaje" class="user_input name" placeholder="Escribe un mensaje aqui" onkeyUp="send(event)" onclick="enableVoiceRecognition()"/>
         </div>
 
       </div>
-      
+
        <div class="app__logout">
         <svg class="app__logout-icon svg-icon" viewBox="0 0 20 20">
           <path d="M6,3 a8,8 0 1,0 8,0 M10,0 10,12"/>
         </svg>
       </div>
     </div>
-   
-    
+
+
   </div>
 </div>
     <script src="js/firebase.js"></script>

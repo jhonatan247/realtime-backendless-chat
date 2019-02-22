@@ -359,9 +359,15 @@ input, button {
     position: absolute;
     bottom: 0rem;
     height: 5rem;
-    width: 100%;
+    width: 70%;
     border-bottom: 1px solid #EEEEEF;
   }
+
+.voice_button {
+  width: 100px;
+  z-index: 10000 !important;
+
+}
 
 .user_input{
     width: 100%;
@@ -437,21 +443,23 @@ input, button {
   font-size: 2rem;
   border-radius: 50%;
   cursor: pointer;
+  /*
   -webkit-transition: bottom 0.4s 0.1s, right 0.4s 0.1s, opacity 0.1s 0.7s, background-color 0.1s 0.7s, -webkit-transform 0.4s 0.4s;
   transition: bottom 0.4s 0.1s, right 0.4s 0.1s, opacity 0.1s 0.7s, background-color 0.1s 0.7s, -webkit-transform 0.4s 0.4s;
   transition: bottom 0.4s 0.1s, right 0.4s 0.1s, transform 0.4s 0.4s, opacity 0.1s 0.7s, background-color 0.1s 0.7s;
   transition: bottom 0.4s 0.1s, right 0.4s 0.1s, transform 0.4s 0.4s, opacity 0.1s 0.7s, background-color 0.1s 0.7s, -webkit-transform 0.4s 0.4s;
   -webkit-transform: scale(0);
           transform: scale(0);
+          */
 }
-.app__logout.clicked {
+.app__logout.clicked {/*
   bottom: 50%;
   right: 50%;
   -webkit-transform: scale(30) !important;
           transform: scale(30) !important;
-  opacity: 0.9;
+  opacity: 0.9;*/
 }
-
+/*
 .app__logout.clicked svg {
   opacity: 0;
 }
@@ -473,7 +481,7 @@ input, button {
   -webkit-animation: animatePath 0.5s 0.5s forwards;
           animation: animatePath 0.5s 0.5s forwards;
 }
-
+*/
 .ripple {
   position: absolute;
   width: 15rem;
